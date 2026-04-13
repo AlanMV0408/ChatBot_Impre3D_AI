@@ -221,3 +221,11 @@ ubicacion_pasillo(4, ['Maquillaje', 'Cremas', 'Shampoo', 'Pañales', 'Paracetamo
 ubicacion_pasillo(5, ['Crema', 'Salchicha', 'Jamon', 'Chorizo', 'Queso', 'Leche', 'Mantequilla']).
 ubicacion_pasillo(6, ['Refresco', 'Agua', 'Suero', 'Cerveza', 'Vinos']).
 
+% Regla para deducir el pasillo de un producto según su tipo
+
+pasillo_de(Tipo, NumPasillo) :-
+    ubicacion_pasillo(NumPasillo, ListaCategorias),
+    member(Tipo, ListaCategorias).
+
+
+
