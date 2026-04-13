@@ -228,4 +228,27 @@ pasillo_de(Tipo, NumPasillo) :-
     member(Tipo, ListaCategorias).
 
 
+% PETICIÓN 1: Mostrar todos los productos de un Tipo
+
+% Muestra toda la información de los productos que coincidan con el 'Tipo'
+info_categoria(Tipo) :-
+    write('--------------------------------------------------'), nl,
+    format('MOSTRANDO PRODUCTOS DE LA CATEGORIA: ~w~n', [Tipo]),
+    write('--------------------------------------------------'), nl,
+    % Buscamos el producto en la base de conocimientos
+    producto(Tipo, Marca, Nombre, Pres, Precio, Coment),
+    % Imprimimos con formato
+    format('Marca: ~w | Producto: ~w | Presenta: ~w | Precio: $~2f | Coment: ~w~n', [Marca, Nombre, Pres, Precio, Coment]),
+    % fail fuerza a Prolog a seguir buscando TODAS las coincidencias, no solo la primera
+    fail.
+    
+% Esta segunda regla atrapa el final del 'fail' para que el programa no devuelva "false" al terminar.
+info_categoria(_) :- 
+    write('--------------------------------------------------'), nl, true.
+
+
+
+
+
+
 
