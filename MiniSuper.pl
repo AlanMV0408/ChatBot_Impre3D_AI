@@ -247,8 +247,26 @@ info_categoria(_) :-
     write('--------------------------------------------------'), nl, true.
 
 
+% PETICIÓN 2: Buscar producto específico con su Ubicación
 
-
-
+% Busca un producto por Tipo y Marca, y muestra dónde está en el layout
+buscar_producto(Tipo, Marca) :-
+    % 1. Encontramos los datos del producto
+    producto(Tipo, Marca, Nombre, Pres, Precio, Coment),
+    % 2. Calculamos su pasillo usando la regla de ubicación
+    pasillo_de(Tipo, Pasillo),
+    % 3. Imprimimos los resultados
+    write('---------------------------------------'), nl,
+    write('         INFORMACION DEL PRODUCTO      '), nl,
+    write('---------------------------------------'), nl,
+    format('Categoria    : ~w~n', [Tipo]),
+    format('Marca        : ~w~n', [Marca]),
+    format('Descripcion  : ~w~n', [Nombre]),
+    format('Presentacion : ~w~n', [Pres]),
+    format('Precio       : $~2f~n', [Precio]),
+    format('Notas        : ~w~n', [Coment]),
+    write('---------------------------------------'), nl,
+    format('UBICACION: Ve al Pasillo ->  ~w ~n', [Pasillo]),
+    write('---------------------------------------'), nl.
 
 
